@@ -8,5 +8,12 @@ export default {
     return {
       titleTemplate: '%s - Flight Sim on Linux'
     }
+  },
+  footer: {
+    text: (
+      <span>
+        © Anthony Berg {new Date().getFullYear()}
+      </span>
+    )
   }
 }
