@@ -1,0 +1,11 @@
+{
+  "index": {
+    "title": "Home"
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "msfs": "Microsoft Flight Simulator 2020",
+  "xp11": "X-Plane 11"
+}
