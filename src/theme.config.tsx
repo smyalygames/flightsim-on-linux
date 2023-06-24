@@ -13,7 +13,10 @@ export default {
     }
   },
   head: () => {
+    // TODO Figure out the reason for these ESLint errors
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { asPath, defaultLocale, locale } = useRouter();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { frontMatter } = useConfig();
     const url = 'https://www.flightsimonlinux.com' + (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
