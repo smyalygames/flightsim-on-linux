@@ -1,0 +1,57 @@
+# Protontricks
+
+[Protontricks](https://github.com/Matoking/protontricks#readme) is a wrapper for running Winetricks commands, which is
+designed for Proton. This makes running executables for Flight Simulator much easier.
+
+## Installation
+
+Installing Protontricks should be quite simple, as there are multiple methods of installing it depending on your
+distribution. You can find the documentation for installing it on their GitHub repository
+[here](https://github.com/Matoking/protontricks#installation).
+
+## Usage
+
+### Protontricks Launcher
+
+Some Desktop Environments will be able to run the file directly in Protontricks if you can right-click the installer
+and open it with `Protontricks Launcher`
+
+![Protontricks Launcher](/protontricks/rightClick.png)
+
+And then select `Microsoft Flight Simulator` as the Wine prefix
+
+![Game Select](/protontricks/gameSelect.png)
+
+### Terminal
+
+If you do not have the option to run Protontricks Launcher, you'll have to manually run it in the terminal with
+
+```
+protontricks 1250410 --gui
+```
+
+Ignore all the warnings that will pop up, as this will not affect the installation.
+
+Once the Winetricks window pops up, OK on `Select the default wineprefix`
+
+![](/protontricks/terminal1.png)
+
+Then select `Run explorer` and click OK
+
+![](/protontricks/terminal2.png)
+
+Which will pop up a window for Flight Simulator's Wine directory, where you'll need to navigate through Linux's
+directory (with the drive that has `/`), where you can find the executable and run it.
+
+![](/protontricks/terminal3.png)
+
+### Uninstalling Applications
+
+The easiest way to uninstall addons/applications would be to run Protontricks in the [terminal](#terminal) and instead
+of selecting `Run explorer`, select `Run uninstaller`
+
+![](/protontricks/uninstall1.png)
+
+This will open up a window where you can uninstall other addons/applications you have installed for Flight Simulator
+
+![](/protontricks/uninstall2.png)

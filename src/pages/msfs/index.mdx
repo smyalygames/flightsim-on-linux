@@ -69,22 +69,5 @@ If you buy addons directly from a developer, it will be likely that you will be 
 executable. These installers cannot be directly run with Wine as this will not use with Wine prefix for Flight
 Simulator.
 
-To make using executable installers easier, you should install
-[Protontricks](https://github.com/Matoking/protontricks#readme) as this will allow you to run installers under
-Flight Simulator's Wine prefix.
-
-Some Desktop Environments will be able to run the file directly in Protontricks if you can right-click the installer
-and open it with `Protontricks Launcher` and then select `Microsoft Flight Simulator` as the Wine prefix.
-
-If you do not have the option to run Protontricks Launcher, you'll have to manually run it in the terminal with
-
-```
-protontricks 1250410 --gui
-```
-
-Then ignore the warnings, click Ok on `Select the default wineprefix`, then select `Run explorer`, which will pop up a
-window for Flight Simulator's Wine directory, where you'll need to navigate through Linux's directory (with the drive
-that has `/`), where you can find the executable and run it.
-
-This is also useful if you want to run certain applications installed later down the line inside `compdata`, or you can
-find the uninstallers in the Protontricks GUI.
+The easiest way to deal with these installer is to use Protontricks, where you can follow the guide
+[here](msfs/protontricks) on how to use it.
