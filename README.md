@@ -20,6 +20,13 @@ To run a development server, run:
 npm run dev
 ```
 
+## Contributing
+
+Any form of contributions will be highly appreciated! If you want to contribute to the codebase, make
+sure to follow the [Contributing Guidelines](docs/CONTRIBUTING.md).
+
+Or if you want to provide any feedback, feel free to submit an Issue.
+
 ## Authors
 
 This project has been developed by [Anthony Berg](https://github.com/smyalygames) to hopefully allow
