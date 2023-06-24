@@ -1,0 +1,120 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# GSX
+
+[GSX](https://www.fsdreamteam.com/products_gsxpro.html) is an addon for Flight Simulator that provides ground services
+and other features to make the simulator feel more alive on the ground.
+
+<Callout type="warning" emoji="⚠️">
+  This addon is only supported on Windows, even though this has been able to run
+  on Linux, there is no guarantee that this will work later down the line. Do
+  not expect support from FSDT (even though Umberto was very kind to fix the
+  installer to work in Proton) as GSX is not officially supported on Linux.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+This addon comes with its own installer that requires quite a bit of tinkering to get working.
+
+Make sure before beginning this tutorial that you familiarise yourself with [Protontricks](/msfs/protontricks).
+
+<Steps>
+
+### Create a symlink for a .NET file
+
+If you do not create a symlink for `regasm.exe`, there will be an error that pops up once the FSDT Universal Installer
+installation completes. This step may not be necessary
+([forum post explaining this](https://www.fsdreamteam.com/forum/index.php/topic,30014.msg193939/topicseen.html#msg193939))
+but I recommend doing this step as it may prevent problems down the line.
+
+The file you will be creating a symlink for is a file included from Proton which is located in
+
+```
+~/.local/share/Steam/steamapps/common/Proton 8.0/dist/lib/wine/i386-windows/regasm.exe
+```
+
+(**Proton versions vary, make sure the directory is for the Proton version that you use for your Flight Simulator**)
+
+Which this file needs to be symlinked to
+
+```
+~/.steam/steam/steamapps/compatdata/1250410/pfx/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/regasm.exe
+```
+
+(**Path to your `compdata` may vary, make sure to change these depending on your Flight Simulator installation**)
+
+A simple command can be run to make a symlink for you (**edit the directories in the command based on the information
+above**)
+
+```shell copy
+ln -s ~/.steam/root/steamapps/common/Proton\ 8.0/dist/lib/wine/i386-windows/regasm.exe ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/regasm.exe
+```
+
+Now when you run the installer, there should be no errors once the installation is finished. If there is, it's likely
+that you can just ignore them.
+
+### Run the FSDT Installer in Protontricks
+
+Make sure to have the installer downloaded and then run it through either the Protontricks Launcher or the Terminal
+(check out the [Protontricks guide](/msfs/protontricks) for more details).
+
+Once the installation completes, the Universal Installer should pop up. Close it as we are going to update it in the
+next step as there does not seem to be an easy way to check the version installed.
+
+### Updating the FSDT Universal Installer
+
+To update the installer, you will need to open up the Protontricks GUI from the terminal
+
+```shell copy
+protontricks 1250410 --gui
+```
+
+And then `Run explorer` ([more detailed guide on this](/msfs/protontricks#terminal)).
+
+Then you will have to navigate to the `FSDT Installer` shortcut which is located on the Desktop inside of Proton.
+The directory for this is
+
+```
+My Computer -> C:\users\Public\Desktop
+```
+
+And then run `FSDT Installer`.
+
+Once this is finished installing, it should pop up with the Universal Installer.
+
+### Installing GSX
+
+Click on `Install` for GSX, enter your license key and let it install. This may take a while, and it will most likely
+look like it will hang at certain points and do nothing, just make sure to give it some time whilst GSX is being
+installed.
+
+Once it has been installed, it will not show that it is linked to the simulator as there is an option to `Relink`. Do
+not press this button as the installer will just freeze. Instead, just close the installer as the next step deals with
+creating the symlinks that the installer was unable create.
+
+### Creating Symlinks to the Simulator
+
+As the symlinks have not been made in Flight Simulator's `Community` folder, you will need to do this manually.
+
+This will need to be done for 2 folders that GSX created when it was installed: `fsdreamteam-gsx-pro` and
+`fsdreamteam-gsx-world-of-jetways`.
+
+Two commands can be run to create these symlinks. **You may need to edit these directories based on where you installed
+Flight Simulator**, these commands assume Flight Simulator is installed in the default location on Steam.
+
+```shell copy filename="fsdreamteam-gsx-pro"
+ln -s ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/Program\ Files\ \(x86\)/Addon\ Manager/MSFS/fsdreamteam-gsx-pro ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/Packages/Community/fsdreamteam-gsx-pro
+```
+
+```shell copy filename="fsdreamteam-gsx-world-of-jetways"
+ln -s ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/Program\ Files\ \(x86\)/Addon\ Manager/MSFS/fsdreamteam-gsx-world-of-jetways ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/Packages/Community/fsdreamteam-gsx-world-of-jetwaysln -s ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/Program\ Files\ \(x86\)/Addon\ Manager/MSFS/fsdreamteam-gsx-pro ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/Packages/Community/fsdreamteam-gsx-pro
+```
+
+</Steps>
+
+And now GSX should be installed into your simulator and should be able to run as normal!
