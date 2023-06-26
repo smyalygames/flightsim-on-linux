@@ -1,0 +1,24 @@
+# Troubleshooting
+
+This page is for general troubleshooting tips for Flight Simulator only, not for addon troubleshooting.
+
+## Freezing on Accessibility Settings in the Loading Screen
+
+The most likely reason for this freeze is due to the screen reader being enabled on this menu and as there is no
+screen reader provided on Linux, this will result in Flight Simulator freezing.
+
+To fix this issue, you will have to remove the screen reader config in the Flight Simulator directory, inside
+`steamapps`.
+
+The file that causes this problem is:
+
+```
+MicrosoftFlightSimulator/Packages/fs-base-ui/ScreenReader/ScreenReader.xml
+```
+
+And you can rename it to remove this file. You can use the command below (**change directories to point to your
+`steamapps` if Flight Simulator is not installed in the default location**)
+
+```shell copy
+mv ~/.steam/steam/steamapps/common/MicrosoftFlightSimulator/Packages/fs-base-ui/ScreenReader/ScreenReader.xml ~/.steam/steam/steamapps/common/MicrosoftFlightSimulator/Packages/fs-base-ui/ScreenReader/ScreenReader.xml.bak
+```
