@@ -1,0 +1,78 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# Navigraph Hub
+
+[Navigraph Hub](https://navigraph.com/products/navigation-data) allows you to update your AIRAC data in the simulator
+and for certain aircraft.
+
+Unfortunately, this is the only way to update the AIRAC, as there is no drag and drop options like in X-Plane, nor are
+there any manual installer for the simulator and addons.
+
+<Callout type="warning" emoji="⚠️">
+  This software is only supported on Windows, even though this has been able to
+  run on Linux, there is no guarantee that this will work later down the line.
+  Do not expect support from Navigraph as this is not officially supported on
+  Linux.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Easy
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  The new update for Navigraph Hub only works with [Proton-GE
+  8](https://github.com/GloriousEggroll/proton-ge-custom), if you are using a
+  vanilla or older version of Proton-GE, this may not work and you may need to
+  update it. Follow the [guide](/msfs#move-old-files-to-new-version) on updating
+  Proton!
+</Callout>
+
+Make sure that you familiarise yourself with [Protontricks](/msfs/protontricks) before beginning this tutorial.
+
+You can download Navigraph Hub from their website, or use this direct link
+[here](https://download.navigraph.com/software/navigraph/windows/Navigraph%20Hub.exe).
+
+<Steps>
+
+### Installing Navigraph Hub
+
+Run the installer in Protontricks. Once the installation completes, Navigraph Hub should open and it should work as
+normal.
+
+### (Optional) Create a Desktop Entry
+
+Creating [Desktop Entries](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+used to be necessary, but not anymore. It is only useful if you want this in your Desktop Environment's application
+launcher.
+
+These files will go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries you have manually created. For example on my system, I store them under
+
+```
+~/.local/share/applications/wine/Programs/Navigraph/
+```
+
+Now create a Desktop Entry inside there with a text editor of your choice. The name of the file is irrelevant as long
+as it has the `.desktop` extension.
+
+```desktop copy filename="Navigraph Hub.desktop"
+[Desktop Entry]
+Name=Navigraph Hub
+Exec=protontricks -c "wine C:/users/steamuser/AppData/Local/Programs/navigraph-hub/Navigraph\\ Hub.exe %u" 1250410
+Type=Application
+MimeType=x-scheme-handler/navigraph-desktop;
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find Navigraph Hub in your Desktop Environment's application launcher.
+
+</Steps>
