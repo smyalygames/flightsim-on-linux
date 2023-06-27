@@ -1,4 +1,5 @@
 import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
 
 # Microsoft Flight Simulator 2020
 
@@ -13,10 +14,9 @@ Microsoft Store does not work on Linux.
 
 <Callout type="error" emoji="⚠️">
   Do **NOT** change Proton versions or Verify Game Integrity once you have
-  downloaded the entire game from the simulator as this can cause you to lose
-  everything you have downloaded/installed for the simulator! Make sure to make
-  backups of the `compdata` for Flight Simulator if this is absolutely
-  necessary.
+  downloaded the entire game from the simulator without following the
+  [guide](#updating-proton) below as this can cause you to lose everything you
+  have downloaded/installed for the simulator!
 </Callout>
 
 ### Configuring
@@ -71,3 +71,48 @@ Simulator.
 
 The easiest way to deal with these installer is to use Protontricks, where you can follow the guide
 [here](msfs/protontricks) on how to use it.
+
+## Updating Proton
+
+<Steps>
+
+### Deactivating Addons
+
+First, make sure to deactivate all of your addons that you have installed if these need to be done manually before
+being uninstalled.
+
+Once this is done, up the uninstaller to uninstall all your addons, as you will need to reinstall them after Proton has
+been updated. This can be done by running this command in the terminal:
+
+```shell copy
+protontricks -c "wine uninstaller" 1250410
+```
+
+### Backup Flight Simulator compdata
+
+Find the `compdata` folder for Flight Simulator (`1250410`) and rename and add `bak` to the folder name, this will look
+like `1250410.bak`. The `compdata` folder can be found by right-clicking Flight Simulator on Steam -> Manage -> Browse
+local files, then go up two directories, and you should see `compdata` there.
+
+### Update Proton Version
+
+In Steam, right-click on Flight Simulator -> Properties -> Compatability, then change the version of Proton to your own
+choice.
+
+Run the game, and you can just close the game once you see the login screen.
+
+### Move old files to new version
+
+In your compdata folder, move the folder for Flight Simulator in AppData the backup you made earlier, to the new folder
+that was created.
+
+This can be done with one command (edit the directory to your `compdata` if it's not the same)
+
+```shell copy
+mv ~/.steam/root/steamapps/compatdata/1250410.bak/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/ ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/
+```
+
+You should now be able to run Flight Simulator without needing to download the entire game again. You will have to
+install all of your addons that you uninstalled earlier again though.
+
+</Steps>
