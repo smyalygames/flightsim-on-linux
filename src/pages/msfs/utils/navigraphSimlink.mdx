@@ -1,0 +1,68 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# Navigraph Simlink
+
+[Navigraph Simlink](https://navigraph.com/apps/connectivity/simlink) allows you to see your aircraft in real time on
+[Navigraph's charts](https://charts.navigraph.com/). The charts are best accessed on a browser, as this does not require you to run it through Wine.
+
+<Callout type="warning" emoji="⚠️">
+  This software is only supported on Windows/Mac, even though this has been able
+  to run on Linux, there is no guarantee that this will work later down the
+  line. Do not expect support from Navigraph as this is not officially supported
+  on Linux.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+Make sure that you familiarise yourself with [Protontricks](/msfs/protontricks) before beginning this tutorial.
+
+You can download Navigraph Simlink from their website, or use this direct link
+[here](https://download.navigraph.com/software/simlink/windows/Navigraph+Simlink.exe).
+
+<Steps>
+
+### Installing Navigraph Simlink
+
+Run the installer in Protontricks. Once the installation completes, Navigraph Simlink will open, you should close this
+and make sure it's completely closed, as it may just minimise to the system tray.
+
+### Create a Desktop Entry
+
+Logging in requires Simlink to be opened form the browser. The only way to register Simlink as a supported application
+that can open from the browser is to create a
+[Desktop Entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).
+
+Desktop Entries go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries you have manually created. For example on my system, I store them under
+
+```
+~/.local/share/applications/wine/Programs/Navigraph/
+```
+
+Now create a Desktop Entry inside there with a text editor of your choice. The name of the file is irrelevant as long
+as it has the `.desktop` extension.
+
+```desktop copy filename="Navigraph Simlink.desktop"
+[Desktop Entry]
+Name=Navigraph Simlink
+Exec=protontricks -c "wine C:/Program\\ Files/Navigraph/Simlink/NavigraphSimlink.exe %u" 1250410
+Type=Application
+MimeType=x-scheme-handler/navigraph-traffic-desktop;
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find Navigraph Simlink in your Desktop Environment's application launcher. Launch it and now
+you should be able to log in!
+
+</Steps>
