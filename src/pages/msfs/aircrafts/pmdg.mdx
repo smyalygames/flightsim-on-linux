@@ -1,0 +1,94 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# PMDG
+
+PMDG has a few study level aircraft for Flight Simulator, most notably the 737s.
+
+<Callout type="warning" emoji="⚠️">
+  PMDG's aircraft are only supported on Windows, even though this has been able
+  to run on Linux, there is no guarantee that this will work later down the
+  line. Do not expect support from PMDG as their aircraft are not officially
+  supported on Linux.
+</Callout>
+
+Their aircraft can be bought on:
+
+- [PMDG Website](https://pmdg.com/msfs/)
+- Flight Simulator store (not tested on Linux so far)
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Easy
+</Callout>
+
+This installation guide is for installing aircraft bought directly from the PMDG website. This guide has only tested
+the 737-800 bought directly from their website, installations may vary, but I would assume it would work the same for
+other aircrafts.
+
+<Steps>
+
+### Run the installer
+
+Download the installer and then run it normally via [Protontricks](/msfs/protontricks).
+
+Once the installer has completed, the PMDG Operations Center will open up and throw an error, click on `Quit` and make
+sure it has been closed.
+
+### Fixing PMDG Operations Center
+
+A config file needs to be edited for the PMDG Operations Center located here (**edit the directory based on where your
+`compdata` for Flight Simulator is**):
+
+```
+~/.steam/steam/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/PMDG/PMDG Operations Center/PMDG Operations Center.exe.config
+```
+
+Open that file in a text editor of your choice and delete these lines:
+
+```xml
+<System.Windows.Forms.ApplicationConfigurationSection>
+  <add key="DpiAwareness" value="PerMonitorV2" />
+</System.Windows.Forms.ApplicationConfigurationSection>
+```
+
+Now when you open the PMDG Operations Center, you should get a warning, which you can click `Continue` on. It should
+work normally and you should be able to install liveries now.
+
+### (Optional) Create a Desktop Entry for PMDG Operations Center
+
+Creating a [desktop entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+should make opening PMDG Operations Center easier as you will not have to find the location manually each time.
+
+These files will go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries that you manually created. For example on my system, I stored this entry
+under
+
+```
+~/.local/share/applications/wine/Programs/PMDG/
+```
+
+Create a Desktop Entry inside a location specified above, with a text editor of your choice. The name of the file is
+irrelevant as long as it has the `.desktop` extension.
+
+```desktop copy filename="PMDG Operations Center.desktop"
+[Desktop Entry]
+Name=PMDG Operations Center
+Exec=protontricks -c "wine C:/users/steamuser/AppData/Roaming/PMDG/PMDG\\ Operations\\ Center/PMDG\\ Operations\\ Center.exe" 1250410
+Type=Application
+StartupNotify=true
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find PMDG Operations Center in your Desktop Environment's application launcher.
+
+</Steps>
+
+The aircraft and PMDG Operations Center should work on Linux now. Enjoy flying your aircraft in the simulator!
