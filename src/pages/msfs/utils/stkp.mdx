@@ -1,0 +1,84 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# SimToolkitPro
+
+[SimToolkitPro](https://navigraph.com/products/navigation-data) is free and is most commonly used for logging your flights, an EFB, or for streaming tools.
+
+This works for multiple simulators, and it also has an AppImage that you can use to run STKP natively.
+
+## Installation
+
+You can just download STKP from [here](https://simtoolkitpro.co.uk/download). If you want the simplest installation,
+you can opt for using STKP through Wine.
+
+However, if you want to use the native Linux version with MSFS, there is a bit of tinkering that you would have to do,
+which is what this installation guide is for.
+
+<Callout type="warning" emoji="⚠️">
+  This method of capturing MSFS data into a STKP instance that is running in
+  native Linux is unsupported and do not ask for support regarding this.
+</Callout>
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+<Steps>
+
+### Install STKP SimConnect Server
+
+You will need to download the server from the download page, or directly from
+[here](https://simtoolkitpro.co.uk/download/get/server).
+
+Then open up the archive and extract `Microsoft.FlightSimulator.SimConnect.dll` and `SimConnectServer.exe` into a folder
+inside your MSFS `compdata`. For example, I extracted it to:
+
+```
+PATH/TO/COMPDATA/1250140/pfx/drive_c/users/steamuser/STKPServer
+```
+
+This should be enough to run in Proton manually with:
+
+```shell copy
+protontricks -c "wine C:/users/steamuser/STKPServer/SimConnectServer.exe" 1250410
+```
+
+### (Optional) Launch Server when Sim starts
+
+To make life easier, I have added an entry in MSFS's `exe.xml` to automatically launch the server when the Simulator
+starts.
+
+To do this, edit the `exe.xml` file in `%appdata%/Microsoft Flight Simulator` (**make a backup first**) and add:
+
+```xml filename="exe.xml" copy
+<Launch.Addon>
+  <Name>STKP Server</Name>
+  <Disabled>False</Disabled>
+  <Path>C:\users\steamuser\STKPServer\SimConnectServer.exe</Path>
+  <CommandLine>-min</CommandLine>
+</Launch.Addon>
+```
+
+- Edit the `<Path>` to where your `SimConnectServer.exe` is located inside your `compdata`.
+- Remove `<CommandLine>-min</CommandLine>` if you don't want the SimConnect Server to start minimised.
+
+### Enable Network Mode in STKP
+
+You will need to enable Network Mode in Settings > MS Flight Simulator, in STKP.
+
+Once you have this enabled, MSFS should be detected from your native Linux version of STKP!
+
+</Steps>
+
+## Updating AIRAC
+
+Updating your AIRAC in STKP requires a Navigraph subscription.
+
+Make sure STKP is closed before you start.
+
+Download the Linux AIRAC for SimToolkitPro [here](https://navigraph.com/downloads).
+
+Extract the contents into `~/Documents/SimToolkitPro`.
+
+Now you can start up STKP and you should see that your AIRAC should be up to date!
