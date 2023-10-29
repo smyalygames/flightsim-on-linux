@@ -1,0 +1,106 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# Contrail
+
+[Contrail](https://contrail.shop/) is an addon shop for both MSFS and Prepar3D.
+They have their own [installer](https://getcontrail.com/) which is their method
+for installing and managing addons bought from Contrail in MSFS.
+
+<Callout type="warning" emoji="⚠️">
+  This installer and addons bought from Contrail are only supported on Windows,
+  even though this has been able to run on Linux, there is no guarantee that
+  this will work later down the line. Do not expect support from Contrail or the
+  respective addon developers.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+The Contrail installer can be slow when launching as it may get stuck on `Installing Dependencies`.
+It does work, you may have to give it a few minutes to launch or to restart it a few times.
+
+<Steps>
+
+### Download and Extract the installer
+
+You will have to [download Contrail](https://getcontrail.com/) and extract the installer manually
+as if you try to run the installer, an error message will pop up asking you to re-run the installer
+as a normal user.
+
+To extract the installer, I would recommend you to use [p7zip](https://p7zip.sourceforge.net/).
+
+Put the installer into an empty directory (unless you are fine with files going everywhere) and run the command:
+
+```shell copy
+7z x ./ContrailSetup.exe
+```
+
+You should get a few files, and the most important one is the `.nupkg` file, as this contains the content
+to install into your `compdata`.
+
+Now, extract the nupkg in the same folder with the command (replacing `X` with the current version):
+
+```shell copy
+7z x ./ContrailApp-X.X.X-full.nupkg
+```
+
+Now you should have a directory `lib/net45`, which is the files you will need to add to your `compdata`.
+
+### Move the files to your compdata
+
+All that is required now is to just have the files in your `compdata`, which may be optional anyways.
+
+I moved the folder to C:/Contrail
+
+You can do so with the command:
+
+```shell copy
+mv ./lib/net45/* PATH/TO/COMPDATA/1250410/pfx/drive_c/Contrail
+```
+
+And now you should be able to run Contrail (`C:/Contrail/Contrail.exe`) with
+
+```shell copy
+protontricks -c "wine C:/Contrail/Contrail.exe" 1250410
+```
+
+Keep in mind that `Installing Dependencies` may take a while, so you will have to be patient. If it does
+seem to be stuck after a few minutes, you can try to restart Contrail.
+
+### (Optional) Create a Desktop Entry
+
+Creating [Desktop Entries](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+used to be necessary, but not anymore. It is only useful if you want this in your Desktop Environment's application
+launcher.
+
+These files will go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries you have manually created. For example on my system, I store them under
+
+```
+~/.local/share/applications/wine/Programs/Contrail/
+```
+
+Now create a Desktop Entry inside there with a text editor of your choice. The name of the file is irrelevant as long
+as it has the `.desktop` extension.
+
+```desktop copy filename="Contrail.desktop"
+[Desktop Entry]
+Name=Contrail
+Exec=protontricks -c "wine C:/Contrail/Contrail.exe" 1250410
+Type=Application
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find Contrail in your Desktop Environment's application launcher.
+
+</Steps>
