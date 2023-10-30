@@ -7,16 +7,19 @@ This is currently the latest release of Flight Simulator from Microsoft, which h
 
 ## Running Flight Simulator
 
-Flight Simulator has been able to run with Proton (it works for me on Proton 8.0), which means the only way
-to run this game would be to buy it on
+Flight Simulator has been able to run with Proton
+([Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom/tree/master) works best for me,
+especially as it fixes problems with certain addons not working. These guides are written for running MSFS
+with Proton-GE), which means the only way to run this game would be to buy it on
 [Steam](https://store.steampowered.com/app/1250410/Microsoft_Flight_Simulator_40th_Anniversary_Edition/) as the
 Microsoft Store does not work on Linux.
 
 <Callout type="error" emoji="⚠️">
-  Do **NOT** change Proton versions or Verify Game Integrity once you have
-  downloaded the entire game from the simulator without following the
-  [guide](#updating-proton) below as this can cause you to lose everything you
-  have downloaded/installed for the simulator!
+  Do **NOT** ~~change Proton versions~~ (check [here](#updating-proton) for more
+  information as to why this may not be necessary anymore) or Verify Game
+  Integrity once you have downloaded the entire game from the simulator without
+  following the [guide](#updating-proton) below as this can cause you to lose
+  everything you have downloaded/installed for the simulator!
 </Callout>
 
 ### Configuring
@@ -73,6 +76,12 @@ The easiest way to deal with these installer is to use Protontricks, where you c
 [here](msfs/protontricks) on how to use it.
 
 ## Updating Proton
+
+<Callout type="info" emoji="ℹ️">
+  These instructions may be unnecessary now. Test this first on another game
+  first to check if your system will not delete the `compdata` for MSFS, or just
+  make a copy of the entire `compdata` for MSFS and check if that gets deleted.
+</Callout>
 
 <Steps>
 
