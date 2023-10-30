@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components';
+
 # Troubleshooting
 
 This page is for general troubleshooting tips for Flight Simulator only, not for addon troubleshooting.
@@ -22,3 +24,22 @@ And you can rename it to remove this file. You can use the command below (**chan
 ```shell copy
 mv ~/.steam/steam/steamapps/common/MicrosoftFlightSimulator/Packages/fs-base-ui/ScreenReader/ScreenReader.xml ~/.steam/steam/steamapps/common/MicrosoftFlightSimulator/Packages/fs-base-ui/ScreenReader/ScreenReader.xml.bak
 ```
+
+## Photogrammetry not working
+
+You may see that the ground textures is using Bing data, and this could be a problem with how the latest versions
+of Proton installs certain libraries that may still be missing.
+
+[Credit for the fix](https://github.com/ValveSoftware/Proton/issues/4134#issuecomment-1315638852)
+
+<Callout type="warning" emoji="⚠️">
+  Make sure to make a **backup** of your MSFS `compdata` if you do not know if
+  changing Proton versions will delete that folder. If it does get deleted, you
+  will have to reinstall MSFS, with the 100+GB download.
+</Callout>
+
+To fix this problem, change MSFS's Proton version to `Proton 6.3` and run the simulator once
+(it may immediately launch and crash, this is fine, move on to the next step).
+
+Once it has run once, you can change the Proton version back to the previous version that you were running on,
+(in my case, Proton-GE 8), and you should see real world photogrammetry again (as long as it's turned on)!
