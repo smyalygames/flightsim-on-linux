@@ -1,0 +1,73 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# VATSIM
+
+[VATSIM](https://vatsim.net/) is a realistic online multiplayer network for all a variety of simulator.
+
+This guide covers setting up a VATSIM client with [swift](https://swift-project.org/) (as vPilot does not run in Proton)
+and model matching from [FSLiveTrafficLiveries](https://fslivetrafficliveries.com/).
+
+<Callout type="warning" emoji="⚠️">
+  These software/addons are only supported on Windows for MSFS, even though this
+  has been able to run on Linux, there is no guarantee that this will work later
+  down the line. Do not expect support as this setup is not officially supported
+  on Linux.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+<Steps>
+
+### Installing Model Matching
+
+I use FSLTL for model matching. It should be a relatively simple install, only problem is that the FBW installer does not
+work in Proton, so you will have to manually download and install the models. This does not cover installing the injector.
+
+To download FSLTL, you should clone the repository on [GitHub](https://github.com/FSLiveTrafficLiveries/base). You can
+download this from GitHub directly `Code > Download Zip`, but it is faster to use git.
+
+```shell copy
+git clone git@github.com:FSLiveTrafficLiveries/base.git
+```
+
+Once you have cloned this, move the `fsltl-traffic-base` directory to your `Community` folder in MSFS. You can also delete
+the leftovers from the cloned repository now.
+
+### Installing swift
+
+Download the Windows installer from their [GitHub repository](https://github.com/swift-project/pilotclient/releases/latest)
+and run the installer through [Protontricks](/msfs/protontricks#terminal).
+
+The configuration wizard should launch automatically.
+
+Accept the terms.
+
+Click on next in the `Data loading` page.
+
+Click on skip in the `Copy models` and `Copy settings and caches` page.
+
+In the `Simulator` page, under `Setup of each individual simulator`:
+
+1. Simulator: FSX
+2. Simulator directory: set the directory to `%appdata%/Microsoft Flight Simulator`
+3. Model directories: `%appdata%/Microsoft Flight Simulator/Packages/Community` and ``%appdata%/Microsoft Flight Simulator/Packages/Official`
+
+Then click next.
+
+In the `First model set` page, make sure FSX is selected in `Simulator` and `Distributions`, then under `Models`:
+
+1. Models: reload
+2. Under `Distributions`, select `FSLTL`, and then back under `Models`, click create next to Model set.
+
+Then your model should have been created, make sure to click on save, then click next.
+
+Skip the XPlane setup (as this will only run for MSFS)
+
+Configure your hotkeys, you'd at least need one for push to talk. Then click Finish.
+
+</Steps>
