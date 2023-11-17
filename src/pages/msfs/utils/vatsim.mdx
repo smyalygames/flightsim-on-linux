@@ -41,7 +41,7 @@ the leftovers from the cloned repository now.
 ### Installing swift
 
 Download the Windows installer from their [GitHub repository](https://github.com/swift-project/pilotclient/releases/latest)
-and run the installer through [Protontricks](/msfs/protontricks#terminal).
+and run the installer through [Protontricks](/msfs/protontricks).
 
 The configuration wizard should launch automatically.
 
@@ -55,7 +55,7 @@ In the `Simulator` page, under `Setup of each individual simulator`:
 
 1. Simulator: FSX
 2. Simulator directory: set the directory to `%appdata%/Microsoft Flight Simulator`
-3. Model directories: `%appdata%/Microsoft Flight Simulator/Packages/Community` and ``%appdata%/Microsoft Flight Simulator/Packages/Official`
+3. Model directories: `%appdata%/Microsoft Flight Simulator/Packages/Community` and `%appdata%/Microsoft Flight Simulator/Packages/Official`
 
 Then click next.
 
@@ -69,5 +69,54 @@ Then your model should have been created, make sure to click on save, then click
 Skip the XPlane setup (as this will only run for MSFS)
 
 Configure your hotkeys, you'd at least need one for push to talk. Then click Finish.
+
+You should now be able to connect to VATSIM! The next steps are to
+[create a .desktop file](#optional-create-a-desktop-entry-for-swift-in-proton) for convenience, or setting
+up a [separate Linux swift client](#optional-installing-swift-on-linux) to connect to the Windows swift client.
+There may not be much of a benefit for doing so, but you do get to use a native Linux client. If you are not interested
+in any of this, just skip to [testing swift](#testing-swift).
+
+### (Optional) Create a Desktop Entry for swift in Proton
+
+Creating a [desktop entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+should make opening the swift client easier as you will not have to find the location manually each time.
+
+These files will go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries that you manually created. For example on my system, I stored this entry
+under
+
+```
+~/.local/share/applications/wine/Programs/swift/
+```
+
+Create a Desktop Entry inside a location specified above, with a text editor of your choice. The name of the file is
+irrelevant as long as it has the `.desktop` extension.
+
+When creating the `.desktop` file, make sure that the directory is correct for the swift version you have installed.
+
+```desktop copy filename="swiftlauncher.desktop"
+[Desktop Entry]
+Name=Swift Launcher (Proton)
+Exec=protontricks -c "wine C:/Program\\ Files/swift-0.12-64bit/bin/swiftlauncher.exe" 1250410
+Type=Application
+StartupNotify=true
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find the Swift Launcher in your Desktop Environment's application launcher.
+
+### (Optional) Installing swift on Linux
+
+### Testing swift
+
+If you haven't used VATSIM before, you should read up on the
+[guides](https://vatsim.net/docs/basics/getting-started), but if not, you can join as an observer at a busy airport,
+with ATC preferably ([map for convenience](https://map.vatsim.net/)), and hopefully you should hear ATC and
 
 </Steps>
