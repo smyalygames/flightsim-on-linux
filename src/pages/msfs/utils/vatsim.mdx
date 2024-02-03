@@ -113,10 +113,33 @@ You should now be able to find the Swift Launcher in your Desktop Environment's 
 
 ### (Optional) Installing swift on Linux
 
+This step may be completely unnecessary, but you may want to complete this step if you don't like interacting with Wine
+programs directly as it may feel like you're playing Jenga. This step may have an extra performance hit, as you will
+still need to run the Proton version of swift, whilst running the Linux version of swift.
+
+Download the Linux installer from their [GitHub repository](https://github.com/swift-project/pilotclient/releases/latest)
+and once it has downloaded, run the installer.
+
+You may want to keep X-Plane selected if you run X-Plane on Linux, but you may also want to use
+[xPilot](https://docs.xpilot-project.org/) separately if you use
+
 ### Testing swift
 
 If you haven't used VATSIM before, you should read up on the
 [guides](https://vatsim.net/docs/basics/getting-started), but if not, you can join as an observer at a busy airport,
-with ATC preferably ([map for convenience](https://map.vatsim.net/)), and hopefully you should hear ATC and
+with ATC preferably ([map for convenience](https://map.vatsim.net/)), and hopefully you should hear ATC and see
+correctly model matched traffic at the airport.
+
+If it is all good, you should have set up swift and model matching correctly, and you can fly on VATSIM now!
 
 </Steps>
+
+## Problems
+
+### Simulator's Squawk Mode C does not reflect on swift
+
+This has only been tested on the PMDG 737 so far, but when you put TCAS to TR/TA, swift does not register that as
+Squawk C.
+
+To work around this problem, make sure to set Squawk C manually on the swift client when you set your TCAS
+to TR/TA.
