@@ -1,0 +1,145 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# VATSIM
+
+[VATSIM](https://vatsim.net/) is a realistic online multiplayer network for all a variety of simulator.
+
+This guide covers setting up a VATSIM client with [swift](https://swift-project.org/) (as vPilot does not run in Proton)
+and model matching from [FSLiveTrafficLiveries](https://fslivetrafficliveries.com/).
+
+<Callout type="warning" emoji="⚠️">
+  These software/addons are only supported on Windows for MSFS, even though this
+  has been able to run on Linux, there is no guarantee that this will work later
+  down the line. Do not expect support as this setup is not officially supported
+  on Linux.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+<Steps>
+
+### Installing Model Matching
+
+I use FSLTL for model matching. It should be a relatively simple install, only problem is that the FBW installer does not
+work in Proton, so you will have to manually download and install the models. This does not cover installing the injector.
+
+To download FSLTL, you should clone the repository on [GitHub](https://github.com/FSLiveTrafficLiveries/base). You can
+download this from GitHub directly `Code > Download Zip`, but it is faster to use git.
+
+```shell copy
+git clone git@github.com:FSLiveTrafficLiveries/base.git
+```
+
+Once you have cloned this, move the `fsltl-traffic-base` directory to your `Community` folder in MSFS. You can also delete
+the leftovers from the cloned repository now.
+
+### Installing swift
+
+Download the Windows installer from their [GitHub repository](https://github.com/swift-project/pilotclient/releases/latest)
+and run the installer through [Protontricks](/msfs/protontricks).
+
+The configuration wizard should launch automatically.
+
+Accept the terms.
+
+Click on next in the `Data loading` page.
+
+Click on skip in the `Copy models` and `Copy settings and caches` page.
+
+In the `Simulator` page, under `Setup of each individual simulator`:
+
+1. Simulator: FSX
+2. Simulator directory: set the directory to `%appdata%/Microsoft Flight Simulator`
+3. Model directories: `%appdata%/Microsoft Flight Simulator/Packages/Community` and `%appdata%/Microsoft Flight Simulator/Packages/Official`
+
+Then click next.
+
+In the `First model set` page, make sure FSX is selected in `Simulator` and `Distributions`, then under `Models`:
+
+1. Models: reload
+2. Under `Distributions`, select `FSLTL`, and then back under `Models`, click create next to Model set.
+
+Then your model should have been created, make sure to click on save, then click next.
+
+Skip the XPlane setup (as this will only run for MSFS)
+
+Configure your hotkeys, you'd at least need one for push to talk. Then click Finish.
+
+You should now be able to connect to VATSIM! The next steps are to
+[create a .desktop file](#optional-create-a-desktop-entry-for-swift-in-proton) for convenience, or setting
+up a [separate Linux swift client](#optional-installing-swift-on-linux) to connect to the Windows swift client.
+There may not be much of a benefit for doing so, but you do get to use a native Linux client. If you are not interested
+in any of this, just skip to [testing swift](#testing-swift).
+
+### (Optional) Create a Desktop Entry for swift in Proton
+
+Creating a [desktop entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+should make opening the swift client easier as you will not have to find the location manually each time.
+
+These files will go into `~/.local/share/applications/`, but you can create multiple directories inside it to make it
+easier to manage your custom Desktop Entries that you manually created. For example on my system, I stored this entry
+under
+
+```
+~/.local/share/applications/wine/Programs/swift/
+```
+
+Create a Desktop Entry inside a location specified above, with a text editor of your choice. The name of the file is
+irrelevant as long as it has the `.desktop` extension.
+
+When creating the `.desktop` file, make sure that the directory is correct for the swift version you have installed.
+
+```desktop copy filename="swiftlauncher.desktop"
+[Desktop Entry]
+Name=Swift Launcher (Proton)
+Exec=protontricks -c "wine C:/Program\\ Files/swift-0.12-64bit/bin/swiftlauncher.exe" 1250410
+Type=Application
+StartupNotify=true
+Categories=Game;Simulation;
+```
+
+Then make sure to update the database for desktop entries by running this command in the terminal
+
+```shell copy
+update-desktop-database ~/.local/share/applications
+```
+
+You should now be able to find the Swift Launcher in your Desktop Environment's application launcher.
+
+### (Optional) Installing swift on Linux
+
+This step may be completely unnecessary, but you may want to complete this step if you don't like interacting with Wine
+programs directly as it may feel like you're playing Jenga. This step may have an extra performance hit, as you will
+still need to run the Proton version of swift, whilst running the Linux version of swift.
+
+Download the Linux installer from their [GitHub repository](https://github.com/swift-project/pilotclient/releases/latest)
+and once it has downloaded, run the installer.
+
+You may want to keep X-Plane selected if you run X-Plane on Linux, but you may also want to use
+[xPilot](https://docs.xpilot-project.org/) separately if you use
+
+### Testing swift
+
+If you haven't used VATSIM before, you should read up on the
+[guides](https://vatsim.net/docs/basics/getting-started), but if not, you can join as an observer at a busy airport,
+with ATC preferably ([map for convenience](https://map.vatsim.net/)), and hopefully you should hear ATC and see
+correctly model matched traffic at the airport.
+
+If it is all good, you should have set up swift and model matching correctly, and you can fly on VATSIM now!
+
+</Steps>
+
+## Problems
+
+### Simulator's Squawk Mode C does not reflect on swift
+
+This has only been tested on the PMDG 737 so far, but when you put TCAS to TR/TA, swift does not register that as
+Squawk C.
+
+To work around this problem, make sure to set Squawk C manually on the swift client when you set your TCAS
+to TR/TA.
