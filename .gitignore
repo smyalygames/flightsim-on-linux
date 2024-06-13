@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# npm
+package-lock.json
+
 # production
 /build
 
