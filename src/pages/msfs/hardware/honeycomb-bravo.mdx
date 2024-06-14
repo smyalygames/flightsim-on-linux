@@ -1,0 +1,64 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# Honeycomb Bravo
+
+[Honeycomb Bravo](https://flyhoneycomb.com/products/bravo-throttle-quadrant) is a popular hardware throttle unit for many flight simulators.
+
+It works natively on linux eg. on X-Plane. To make it recognizable by Wine a few tweaks are needed.
+
+## Setup
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+<Steps>
+
+### Ensure Honeycomb Bravo is recognized as a HID device
+
+By default wine recognizes the Honeycomb Bravo throttle as an XBOX controller. To fix this a few changes to the registry of the Wine prefix are needed.
+
+<Callout type="warning" emoji="⚠️">
+  Editing the registry can break a Windows system and break your Wine prefix if something is done wrong.
+  Use caution and read the instructions carefully.
+</Callout>
+
+#### Open the registry editor
+
+```
+protontricks 1250410 regedit
+```
+
+#### Create necessary registry entries
+
+Locate the following registry key
+
+```
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\winebus
+```
+
+Create the following DWORD values:
+
+- Name: Enable SDL Value: 0
+- Name: Map Controllers Value: 0
+
+### (Optional) Correct already registered device
+
+If you already started MSFS with the Honeycomb Bravo plugged in, it's likely been registered as an XBOX controller.
+
+You can fix this by editing the following registry key: `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Enum\WINEBUS`
+
+#### Reset values of existing xinput entries to winehid
+
+The entries regarding the Honeycomb Bravo contain the following device IDs (VID/PID) 294b and 1901
+Inside those entries a few changes need to be made.
+
+- Change the value of "Service" from `xinput` to `winehid`
+- Change the value of "DeviceDesc" from `Wine XInput compatible device` to `Wine HID compatible device`
+- Change "CompatibleIds" to only include `WINEBUS\WINE_COMP_HID`. 
+
+</Steps>
+
+You should now see your Honeycomb Throttle in the controller settings in MSFS and can map it to your liking.
+
