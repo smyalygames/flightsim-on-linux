@@ -5,7 +5,7 @@ import { Steps } from 'nextra-theme-docs';
 
 [Honeycomb Bravo](https://flyhoneycomb.com/products/bravo-throttle-quadrant) is a popular hardware throttle unit for many flight simulators.
 
-It works natively on linux eg. on X-Plane. To make it recognizable by Wine a few tweaks are needed.
+It works natively on Linux e.g. on X-Plane. To make it recognizable by Wine a few tweaks are needed.
 
 ## Setup
 
@@ -17,7 +17,7 @@ It works natively on linux eg. on X-Plane. To make it recognizable by Wine a few
 
 ### Ensure Honeycomb Bravo is recognized as a HID device
 
-By default wine recognizes the Honeycomb Bravo throttle as an XBOX controller. To fix this a few changes to the registry of the Wine prefix are needed.
+By default Wine recognizes the Honeycomb Bravo throttle as an XBOX controller. To fix this a few changes to the registry of the Wine prefix are needed.
 
 <Callout type="warning" emoji="⚠️">
   Editing the registry can break a Windows system and break your Wine prefix if something is done wrong.
@@ -56,7 +56,7 @@ Inside those entries a few changes need to be made.
 
 - Change the value of "Service" from `xinput` to `winehid`
 - Change the value of "DeviceDesc" from `Wine XInput compatible device` to `Wine HID compatible device`
-- Change "CompatibleIds" to only include `WINEBUS\WINE_COMP_HID`. 
+- Change "CompatibleIds" to only include `WINEBUS\WINE_COMP_HID`.
 
 </Steps>
 
