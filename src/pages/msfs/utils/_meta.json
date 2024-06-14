@@ -1,8 +1,8 @@
 {
   "contrail": "Contrail",
   "gsx": "GSX",
-  "navigraphHub": "Navigraph Hub",
-  "navigraphSimlink": "Navigraph Simlink",
+  "navigraph-hub": "Navigraph Hub",
+  "navigraph-simlink": "Navigraph Simlink",
   "stkp": "SimToolkitPro",
   "vatsim": "VATSIM"
 }
