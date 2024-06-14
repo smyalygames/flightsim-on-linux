@@ -17,7 +17,7 @@ the documentation framework.
 To run a development server, run:
 
 ```shell
-npm run dev
+pnpm run dev
 ```
 
 ## Contributing
