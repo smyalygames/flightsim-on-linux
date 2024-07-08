@@ -7,7 +7,12 @@ export default {
   },
   docsRepositoryBase:
     'https://github.com/smyalygames/flightsim-on-linux/blob/main',
-  logo: <span>Flight Sim on Linux</span>,
+    logo: () => (
+      <>
+        <img height="45px" width="45px" src="/logo/flightsim-on-linux-icon.png" alt="Flight Sim on Linux Logo" />
+        <span>&nbsp;&nbsp;Flight Sim on Linux</span>
+      </>
+    ),
   useNextSeoProps() {
     return {
       titleTemplate: '%s - Flight Sim on Linux',

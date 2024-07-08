@@ -1,4 +1,4 @@
-# Flight Sim on Linux
+<h1><img src="public/logo/flightsim-on-linux-icon.png" style="vertical-align: middle;" height="64" width="64"/>&nbsp;&nbsp;Flight Sim on Linux</h1>
 
 A website to provide information on how to get flight simulators and their addons working on Linux.
 
