@@ -38,6 +38,7 @@ export default {
 
     return (
       <>
+        <link rel={'icon'} href={'/logo_t.png'} />
         <meta property="og:url" content={url} />
         <meta
           property="og:title"
@@ -50,6 +51,7 @@ export default {
             'Guides to running Flight Simulators on Linux'
           }
         />
+        <meta property={'og:image'} content={'/logo_t.png'} />
       </>
     );
   },
