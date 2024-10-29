@@ -1,13 +1,26 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
+import Image from 'next/image';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   project: {
     link: 'https://github.com/smyalygames/flightsim-on-linux',
   },
   docsRepositoryBase:
     'https://github.com/smyalygames/flightsim-on-linux/blob/main',
-  logo: <span>Flight Sim on Linux</span>,
+  logo: (
+    <>
+      <Image
+        src={'/logo_t.png'}
+        alt={'Logo with Tux throwing a paper airplane'}
+        width={80}
+        height={71}
+        style={{ paddingRight: '0.75em' }}
+      />
+      <span>Flight Sim on Linux</span>
+    </>
+  ),
   useNextSeoProps() {
     return {
       titleTemplate: '%s - Flight Sim on Linux',
