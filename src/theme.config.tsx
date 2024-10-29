@@ -15,7 +15,7 @@ export default {
         src={'/logo_t.png'}
         alt={'Logo with Tux throwing a paper airplane'}
         width={80}
-        height={71}
+        height={58}
         style={{ paddingRight: '0.75em' }}
       />
       <span>Flight Sim on Linux</span>
