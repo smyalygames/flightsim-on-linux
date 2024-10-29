@@ -14,8 +14,8 @@ export default {
       <Image
         src={'/logo_t.png'}
         alt={'Logo with Tux throwing a paper airplane'}
-        width={80}
-        height={58}
+        width={75}
+        height={54}
         style={{ paddingRight: '0.75em' }}
       />
       <span>Flight Sim on Linux</span>
@@ -38,7 +38,11 @@ export default {
 
     return (
       <>
-        <link rel={'icon'} href={'/logo_t.png'} />
+        <link
+          rel={'icon'}
+          type={'image/png'}
+          href={'/favicon/favicon512.png'}
+        />
         <meta property="og:url" content={url} />
         <meta
           property="og:title"
