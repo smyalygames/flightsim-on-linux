@@ -1,0 +1,36 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# 
+
+[Thrustmaster Flight Rudder Pedals](https://www.thrustmaster.com/fr-fr/products/t-flight-rudder-pedals) is a popular hardware pedals unit for many flight simulators.
+It works great with a Honeycomb Alpha Bravo combo for much cheaper than the Honeycomb charlie gear.
+
+To make it recognizable by Linux one tweak is needed.
+
+## Setup
+
+<Callout type="info" emoji="ℹ️">
+  **Difficulty:** Medium
+</Callout>
+
+<Steps>
+
+#### Create a udev rule
+
+Create a /etc/udev/rules.d/60-thrustmaster.rules and add the following:
+
+```
+KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b679", MODE="0660", TAG+="uaccess"
+```
+Those instructions work on Ubuntu 22.04. 
+
+</Steps>
+
+You should now see your TFRP in the controller settings in MSFS and can map it to your liking.
+
+## Warning & utility
+
+Some Proton versions make the TFRP behave erraticaly within MSFS. GE-Proton9-25 work for me but not GE-Proton9-26 nor GE-Proton9-27.
+To check your gear outside the proton layer, I found the evjstest from [evjs](https://github.com/shumatech/evjs) utility to work perfectly. 
+
