@@ -2,11 +2,11 @@ import { Callout } from 'nextra/components';
 import { Steps } from 'nextra-theme-docs';
 
 # NewSky
+
 [Newsky](https://newsky.app/) is a client for virtual airlines to book, track, and manage flights.
 
 <Callout type="warning" emoji="⚠️">
-Whilst Newsky can work on Linux, their [official stance]
-(https://wiki.newsky.app/#is-maclinux-supported) is that it is unsupported. It is "planned", so hopefully
+Whilst Newsky can work on Linux, their official stance is that it is unsupported. It is "planned", so hopefully
 they do not intentionally break anything, there is no guarantee, and do not expect support from Newsky on
 running with Linux.
 </Callout>
@@ -17,7 +17,7 @@ running with Linux.
 **Difficulty:** easy-medium
 </Callout>
 
-Newsky can have issues launching alongside MSFS when running using protontricks, to get around this,
+Newsky can have issues launching alongside MSFS when running using protontricks. To get around this,
 Newsky can be launched using Wine, and then use a networked SimConnect session to connect to MSFS.
 
 <steps>
@@ -45,7 +45,8 @@ Open SimConnect.xml in a text editor of your choice
 
 Create a new SimConnect.comm section, where PORT is the port that was set in Newsky:
 
-`<SimConnect.Comm>
+```shell copy
+    <SimConnect.Comm>
         <Descr>Static IP4 port</Descr>
         <Protocol>IPv4</Protocol>
         <Address>127.0.0.1</Address>
@@ -53,7 +54,8 @@ Create a new SimConnect.comm section, where PORT is the port that was set in New
         <Port>8381</Port>
         <MaxClients>64</MaxClients>
         <MaxRecvSize>41088</MaxRecvSize>
-    </SimConnect.Comm>`
+    </SimConnect.Comm>
+    ```
 
 Now launch MSFS, and Newsky should be able to connect to the simulator. The text in the top left saying
 "waiting for sim connection" should change to "connected to simulator", and will show during towards the end
