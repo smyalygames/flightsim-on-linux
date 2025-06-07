@@ -1,14 +1,15 @@
 import { Callout } from 'nextra/components';
 import { Steps } from 'nextra-theme-docs';
 
-# NewSky
+# Newsky
 
 [Newsky](https://newsky.app/) is a client for virtual airlines to book, track, and manage flights.
 
 <Callout type="warning" emoji="⚠️">
-Whilst Newsky can work on Linux, their official stance is that it is unsupported. It is "planned", so hopefully
-they do not intentionally break anything, there is no guarantee, and do not expect support from Newsky on
-running with Linux.
+This software is only supported on Windows. Whilst Newsky says official Linux and Mac support is 
+"planned at some point", currently it is "not yet" supported, and though it has been able to be run
+on Linux, there is no guarantee that this will work later down the line. Do not expect, or ask for,
+support from Newsky.
 </Callout>
 
 ## Installation
@@ -20,7 +21,7 @@ running with Linux.
 Newsky can have issues launching alongside MSFS when running using protontricks. To get around this,
 Newsky can be launched using Wine, and then use a networked SimConnect session to connect to MSFS.
 
-<steps>
+<Steps>
 
 ### Download and run the Newsky installer
 
@@ -39,7 +40,7 @@ I chose 8381, other ports may/may not work for you, but this worked for me.
 
 ### Enable Networked SimConnect for MSFS
 
-Navigate to `PATH/TO/COMPDATA/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\Simulator`
+Navigate to `PATH/TO/COMPDATA/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator`
 
 Open SimConnect.xml in a text editor of your choice
 
@@ -62,5 +63,9 @@ Now launch MSFS, and Newsky should be able to connect to the simulator. The text
 of the loading screen, or on the main menu. If it does not change, check that the ports match, or try another
 port.
 
-There should be no need to create a desktop icon yourself, as Winetricks should have created it for you.
-</steps>
+### (Optional) Desktop entry
+
+There should be no need to create a desktop file yourself, as Winetricks should have created it for you.
+If you want to modify the .desktop file, it is located in `~/.local/share/applications/wine/programs`.
+
+</Steps>
