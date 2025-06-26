@@ -1,0 +1,69 @@
+import { Callout } from 'nextra/components';
+import { Steps } from 'nextra-theme-docs';
+
+# Newsky
+
+[Newsky](https://newsky.app/) is a client for virtual airlines to book, track, and manage flights.
+
+<Callout type="warning" emoji="⚠️">
+This software is only supported on Windows. Whilst Newsky says official Linux and Mac support is 
+"planned at some point", currently it is "not yet" supported, and though it has been able to be run
+on Linux, there is no guarantee that this will work later down the line. Do not expect, or ask for,
+support from Newsky.
+</Callout>
+
+## Installation
+
+<Callout type="info" emoji="ℹ️">
+**Difficulty:** easy-medium
+</Callout>
+
+Newsky can have issues launching alongside MSFS when running using protontricks. To get around this,
+Newsky can be launched using Wine, and then use a networked SimConnect session to connect to MSFS.
+
+<Steps>
+
+### Download and run the Newsky installer
+
+You can download the Newsky installer from the link on [their website](https://newsky.app/).
+
+Open Winetricks (not Protontricks), select the default prefix which should show up in the window 
+titlebar under `~/.wine`. Then select "run an arbitrary executable", find the Newsky installer
+you downloaded, and run the installer. Once Newsky has finished installing, it should have added a shortcut
+in your application launcher, and opens automatically.
+
+Sign into Newsky, then click on your user profile in the top right, and open settings. Scroll down until 
+you reach the "Networked setup" setup.
+
+Enable the Networked setup, and select MSFS as the simulator, 127.0.0.1 as the IP address, and a free port.
+I chose 8381, other ports may or may not work for you, but this worked for me.
+
+### Enable Networked SimConnect for MSFS
+
+Navigate to `PATH/TO/COMPDATA/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator`
+
+Open `SimConnect.xml` in a text editor of your choice, then add a new `<SimConnect.comm>` element, where "PORT" is the port that was set in Newsky:
+
+```shell copy
+    <SimConnect.Comm>
+        <Descr>Static IP4 port</Descr>
+        <Protocol>IPv4</Protocol>
+        <Address>127.0.0.1</Address>
+        <Scope>global</Scope>
+        <Port>PORT</Port>
+        <MaxClients>64</MaxClients>
+        <MaxRecvSize>41088</MaxRecvSize>
+    </SimConnect.Comm>
+    ```
+
+Now launch MSFS, and Newsky should be able to connect to the simulator. The text in the top left saying
+"waiting for sim connection" should change to "connected to simulator", and will show during towards the end
+of the loading screen, or on the main menu. If it does not change, check that the ports match, or try another
+port.
+
+### (Optional) Desktop entry
+
+There should be no need to create a desktop file yourself, as Winetricks should have created it for you.
+If you want to modify the .desktop file, it is located in `~/.local/share/applications/wine/programs`.
+
+</Steps>
