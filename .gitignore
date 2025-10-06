@@ -38,4 +38,4 @@ yarn-error.log*
 next-env.d.ts
 
 # jetbrains idea
-./idea
+/.idea
