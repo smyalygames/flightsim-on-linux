@@ -14,24 +14,25 @@
     "pnpm": ">=8"
   },
   "dependencies": {
-    "@types/node": "^20.14.2",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.3",
-    "next": "^14.2.3",
-    "nextra": "^2.13.4",
-    "nextra-theme-docs": "^2.13.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.4.5"
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "^10.8.1",
+    "eslint-config-next": "^16.3.1",
+    "next": "16.3.1",
+    "nextra": "^4.6.1",
+    "nextra-theme-docs": "^4.6.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-mdx": "^3.1.5",
-    "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.3.1"
+    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/parser": "^8.67.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-mdx": "^3.8.1",
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "^3.9.6"
   }
 }
