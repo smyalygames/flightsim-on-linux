@@ -75,13 +75,14 @@ update-desktop-database ~/.local/share/applications
 
 You should now be able to find Navigraph Hub in your Desktop Environment's application launcher.
 
-### Troubleshooting
-#### Installing anything from Navigraph Hub fails with a `Win32Exception`
+</Steps>
+
+## Troubleshooting
+### Installing anything from Navigraph Hub fails with a `Win32Exception`
 As per [a post on the Navigraph forums](https://forum.navigraph.com/t/cannot-install-anything-on-linux-workaround/22769),
-procgov.exe doesn't work as it calls a function that is incorrectly implemented in wine-win32.
-However, if procgov.exe isn't found, Navigraph Hub will resort to using 7z, which works just fine. Therefore, just navigate
+`procgov.exe` doesn't work as it calls a function that is incorrectly implemented in wine-win32.
+
+However, if `procgov.exe` isn't found, Navigraph Hub will resort to using 7z, which works just fine. Therefore, just navigate
  into the directory where Navigraph Hub is installed 
 (`.../steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Local/Programs/navigraph-hub/resources/assets/bin`)
- and move or delete procgov.exe. Navigraph Hub should now be able to install everything. 
-
-</Steps>
+ and move or delete `procgov.exe`. Navigraph Hub should now be able to install everything.
