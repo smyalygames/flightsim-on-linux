@@ -8,7 +8,7 @@ It works natively on Linux e.g. on X-Plane. To make it recognizable by Wine a fe
 
 ## Setup
 
-<Callout type="info" emoji="ℹ️">
+<Callout type="info">
   **Difficulty:** Medium
 </Callout>
 
@@ -18,7 +18,7 @@ It works natively on Linux e.g. on X-Plane. To make it recognizable by Wine a fe
 
 By default Wine recognizes the Honeycomb Bravo throttle as an XBOX controller. To fix this a few changes to the registry of the Wine prefix are needed.
 
-<Callout type="warning" emoji="⚠️">
+<Callout type="warning">
   Editing the registry can break a Windows system and break your Wine prefix if something is done wrong.
   Use caution and read the instructions carefully.
 </Callout>
@@ -42,7 +42,7 @@ Create the following DWORD values:
 - Name: Enable SDL Value: 0
 - Name: Map Controllers Value: 0
 
-<Callout type="warning" emoji="⚠️">
+<Callout type="warning">
   For MSFS 2024 creating these keys as `DWORD` causes all peripherals to disappear besides mouse and keyboard, instead, create them as `String`. 
 </Callout>
 
