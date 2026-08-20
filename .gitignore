@@ -39,3 +39,6 @@ next-env.d.ts
 
 # jetbrains idea
 /.idea
+
+# pagefind
+_pagefind/
