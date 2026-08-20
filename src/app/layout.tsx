@@ -5,7 +5,7 @@ import type { FC, ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next'
 import Image from 'next/image';
 // Required for theme styles, previously was imported under the hood
-import 'nextra-theme-docs/style.css';
+import './globals.css';
 
 export const metadata: Metadata = {
   description: 'Guides to running Flight Simulators on Linux',
