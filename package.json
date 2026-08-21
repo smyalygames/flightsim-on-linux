@@ -1,6 +1,6 @@
 {
   "name": "flightsim-on-linux",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -12,7 +12,7 @@
   },
   "engines": {
     "node": ">=20",
-    "pnpm": ">=8"
+    "pnpm": ">=10"
   },
   "dependencies": {
     "@types/mdx": "^2.0.14",
