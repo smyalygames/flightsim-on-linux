@@ -1,0 +1,130 @@
+---
+asIndexPage: true
+---
+
+import { Callout, Steps } from 'nextra/components';
+
+# Microsoft Flight Simulator 2020
+
+This is currently the latest release of Flight Simulator from Microsoft, which has been made for Windows only.
+
+## Running Flight Simulator
+
+Flight Simulator has been able to run with Proton
+([Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom/tree/master) works best for me,
+especially as it fixes problems with certain addons not working. These guides are written for running MSFS
+with Proton-GE), which means the only way to run this game would be to buy it on
+[Steam](https://store.steampowered.com/app/1250410/Microsoft_Flight_Simulator_40th_Anniversary_Edition/) as the
+Microsoft Store does not work on Linux.
+
+<Callout type="error">
+  Do **NOT** ~~change Proton versions~~ (check [here](#updating-proton) for more
+  information as to why this may not be necessary anymore) or Verify Game
+  Integrity once you have downloaded the entire game from the simulator without
+  following the [guide](#updating-proton) below as this can cause you to lose
+  everything you have downloaded/installed for the simulator!
+</Callout>
+
+### Configuring
+
+Some tinkering may also be required to run this game. You can find other people's fixes on
+[ProtonDB](https://www.protondb.com/app/1250410) if you run into problems launching the game.
+
+[Launch options](https://help.steampowered.com/en/faqs/view/7D01-D2DD-D75E-2955) may be needed for this game to start.
+This one below is what works for me:
+
+```
+-FastLaunch
+```
+
+Even if this launch option is not required, this would be useful as it skips the intro video at the beginning.
+
+## Installing Addons
+
+Most of the time, installing addons should be pretty straight forward, unless there is an installer involved.
+
+The addons bought from the store in-game should be able to be installed easily and work out of the box.
+
+### Drag and Drop Installations
+
+Some addons, most commonly freeware where you download it outside of Flight Simulator, are a simple drag and drop
+into the `Community` Folder, which is stored in `compdata` (folder to store Wine/Proton configs/data for each game) >
+`1250410` (Flight Simulator's game ID on Steam).
+
+For example, this is the directory to the `Community` Folder if Flight Simulator is installed in the default location:
+
+```
+~/.steam/steam/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft Flight Simulator/Packages/Community/
+```
+
+The equivalent version of this on Windows is:
+
+```
+C:\users\steamuser\AppData\Roaming\Microsoft Flight Simulator\Packages\Community\
+```
+
+### Executable Installers
+
+<Callout type="warning" emoji="⚠️">
+  Dealing with developer's installers is usually requires more tinkering and
+  therefore you may need more advanced knowledge on Windows and Linux (alongside
+  the Desktop Environment you're using)!
+</Callout>
+
+If you buy addons directly from a developer, it will be likely that you will be given an installer that is an
+executable. These installers cannot be directly run with Wine as this will not use with Wine prefix for Flight
+Simulator.
+
+The easiest way to deal with these installer is to use Protontricks, where you can follow the guide
+[here](msfs/protontricks) on how to use it.
+
+## Updating Proton
+
+<Callout type="info">
+  These instructions may be unnecessary now. Test this first on another game
+  first to check if your system will not delete the `compdata` for MSFS, or just
+  make a copy of the entire `compdata` for MSFS and check if that gets deleted.
+</Callout>
+
+<Steps>
+
+### Deactivating Addons
+
+First, make sure to deactivate all of your addons that you have installed if these need to be done manually before
+being uninstalled.
+
+Once this is done, up the uninstaller to uninstall all your addons, as you will need to reinstall them after Proton has
+been updated. This can be done by running this command in the terminal:
+
+```shell copy
+protontricks -c "wine uninstaller" 1250410
+```
+
+### Backup Flight Simulator compdata
+
+Find the `compdata` folder for Flight Simulator (`1250410`) and rename and add `bak` to the folder name, this will look
+like `1250410.bak`. The `compdata` folder can be found by right-clicking Flight Simulator on Steam -> Manage -> Browse
+local files, then go up two directories, and you should see `compdata` there.
+
+### Update Proton Version
+
+In Steam, right-click on Flight Simulator -> Properties -> Compatability, then change the version of Proton to your own
+choice.
+
+Run the game, and you can just close the game once you see the login screen.
+
+### Move old files to new version
+
+In your compdata folder, move the folder for Flight Simulator in AppData the backup you made earlier, to the new folder
+that was created.
+
+This can be done with one command (edit the directory to your `compdata` if it's not the same)
+
+```shell copy
+mv ~/.steam/root/steamapps/compatdata/1250410.bak/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/ ~/.steam/root/steamapps/compatdata/1250410/pfx/drive_c/users/steamuser/AppData/Roaming/Microsoft\ Flight\ Simulator/
+```
+
+You should now be able to run Flight Simulator without needing to download the entire game again. You will have to
+install all of your addons that you uninstalled earlier again though.
+
+</Steps>
