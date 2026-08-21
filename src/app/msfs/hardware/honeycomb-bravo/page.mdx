@@ -25,7 +25,7 @@ By default Wine recognizes the Honeycomb Bravo throttle as an XBOX controller. T
 
 #### Open the registry editor
 
-```
+```shell
 protontricks 1250410 regedit
 ```
 
@@ -39,8 +39,8 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\winebus
 
 Create the following DWORD values:
 
-- Name: Enable SDL Value: 0
-- Name: Map Controllers Value: 0
+- Name: `Enable SDL`, Value: `0`.
+- Name: `Map Controllers`, Value: ` 0`.
 
 <Callout type="warning">
   For MSFS 2024 creating these keys as `DWORD` causes all peripherals to disappear besides mouse and keyboard, instead, create them as `String`. 
