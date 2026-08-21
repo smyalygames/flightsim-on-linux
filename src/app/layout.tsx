@@ -1,7 +1,7 @@
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
-import { Banner, Head } from 'nextra/components';
+import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next'
 import Image from 'next/image';
 // Required for theme styles, previously was imported under the hood
@@ -47,9 +47,7 @@ const footer = (
   </Footer>
 );
 
-const RootLayout: FC<{
-  children: ReactNode
-}> = async ({ children }) => {
+export default async function RootLayout({ children }: { children: ReactNode}) {
   return (
     <html
       lang="en"
@@ -71,6 +69,4 @@ const RootLayout: FC<{
       </body>
     </html>
   );
-}
-
-export default RootLayout;
+};
