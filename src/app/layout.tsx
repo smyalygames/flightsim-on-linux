@@ -11,17 +11,12 @@ export const metadata: Metadata = {
   description: 'Guides to running Flight Simulators on Linux',
   metadataBase: new URL('https://flightsimonlinux.com'),
   title: {
-    absolute: '',
+    default: 'Flight Sim on Linux - Guides to Running Flight Simulators on Linux',
     template: '%s | Flight Sim on Linux',
   },
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        type: 'image/x-icon',
-      },
-    ],
-  },
+  twitter: {
+    site: 'https://flightsimonlinux.com',
+  }
 };
 
 const navbar = (
@@ -29,7 +24,7 @@ const navbar = (
     logo={
       <>
         <Image
-          src={'/logo_t.png'}
+          src={'/icon.png'}
           alt={'Logo with Tux throwing a paper airplane'}
           width={75}
           height={54}
