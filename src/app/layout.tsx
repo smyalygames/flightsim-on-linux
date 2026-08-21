@@ -2,7 +2,7 @@ import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import type { ReactNode } from 'react';
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import Image from 'next/image';
 // Required for theme styles, previously was imported under the hood
 import './globals.css';
