@@ -12,7 +12,7 @@
   },
   "engines": {
     "node": ">=20",
-    "pnpm": ">=10"
+    "pnpm": ">=9"
   },
   "dependencies": {
     "@types/mdx": "^2.0.14",
